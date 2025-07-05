@@ -1,21 +1,29 @@
-leaders = [
-    ("Ваня", 6, 20),
-    ("Егор", 7, 30),
-    ("Андрей", 7, 50),
-]
-def print_leaders(leaders: list[tuple[str, int, int]], formatted: bool = True, file_name: str = None) -> None:
-    if formatted:
-        a = "Имя\t   Игры\tОчки\n"
-        a += "-" * 20 + "\n"
-        for name, games, points in leaders:
-            a += f"{name}\t{games}\t{points}\n"
-    else:
-        a = "\n".join(f"{name},{games},{points}" for name, games, points in leaders)
+def print_hollow_diamond(size=5):
+    """
+    Рисует пустой ромбик из символов '0'
+    """
+    n = size
+    total_rows = 2 * n - 1
 
-    print(a)
+    for i in range(total_rows):
+        # Определяем уровень (строку) относительно центра ромба
+        if i < n:
+            # Верхняя половина
+            left_pos = n - i - 1
+            right_pos = n + i - 1
+        else:
+            # Нижняя половина
+            j = i - n + 1
+            left_pos = j
+            right_pos = total_rows - j - 1
 
-    if file_name:
-        with open(file_name, 'w', encoding='utf-8') as f:
-            f.write(a)
-# Вывод в файл в формате с форматированием
-print_leaders(leaders, formatted=True, file_name='leaders_formatted.txt')
+        line = ""
+        for pos in range(total_rows):
+            if pos == left_pos or pos == right_pos:
+                line += "0"
+            else:
+                line += " "
+        print(line)
+
+
+print_hollow_diamond(5)
