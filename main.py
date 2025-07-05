@@ -6,7 +6,7 @@ def print_hollow_diamond(size=5):
     total_rows = 2 * n - 1
 
     for i in range(total_rows):
-        # Определяем уровень (строку) относительно центра ромба
+        # Определяем строку относительно центра ромба
         if i < n:
             # Верхняя половина
             left_pos = n - i - 1
@@ -17,7 +17,7 @@ def print_hollow_diamond(size=5):
             left_pos = j
             right_pos = total_rows - j - 1
 
-        line = ""
+        line = "  "
         for pos in range(total_rows):
             if pos == left_pos or pos == right_pos:
                 line += "0"
